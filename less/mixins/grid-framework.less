@@ -1,0 +1,38 @@
+.make-column(@breakpoint, @columns) {
+  @breakpoint_temp : extract(@breakpoint, 1);
+
+  .Grid__col--@{breakpoint_temp} {
+    .for(@columns);
+    .-each(@number) {
+      &-@{number} {
+        width: 100% * (@number / 12);
+        flex: none;
+      }
+    }
+  }
+}
+
+.make-gutter() {
+  .Grid--gutters {
+    .Grid__col {
+      padding: 1rem 0 0 1rem;
+    }
+  }
+}
+
+.make-grid(@breakpoints, @columns) {
+  .for(@breakpoints);
+  .-each(@breakpoint) {
+    @width : extract(@breakpoint, 2);
+
+    & when (@width = 0) {
+      .make-column(@breakpoint, @columns);
+    }
+    & when (@width > 0) {
+      @media (min-width: @width) {
+        .make-gutter();
+        .make-column(@breakpoint, @columns);
+      }
+    }
+  }
+}
