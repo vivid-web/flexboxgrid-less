@@ -1,0 +1,11 @@
+.has(@element; @content){
+  &__@{element}{
+    @content();
+  }
+}
+
+.variant(@modifier; @content){
+  &--@{modifier} {
+    @content();
+  }
+}
