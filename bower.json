@@ -1,10 +1,10 @@
 {
   "name": "flexbox-grid-less",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A simple flexbox CSS grid system",
   "main": "dist/flexbox-grid.min.css",
   "authors": [
-    "Peter van Meijgaard <petervanmeijgaard@hotmail.com>"
+    "Vivid Websolutions <info@vivid-websolutions.nl>"
   ],
   "license": "MIT",
   "keywords": [
@@ -16,7 +16,8 @@
     "stylus",
     "sass",
     "less",
-    "front-end"
+    "front-end",
+    "BEM"
   ],
   "ignore": [
     "**/.*",
