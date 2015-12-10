@@ -1,6 +1,6 @@
 {
   "name": "flexbox-grid-less",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A simple flexbox CSS grid system",
   "main": "dist/flexbox-grid.min.css",
   "repository": {
