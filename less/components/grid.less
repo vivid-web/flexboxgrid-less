@@ -8,6 +8,10 @@
     width: 100%;
   });
 
+  .variant(no-gutters, {
+    padding: 0;
+  });
+
   .has(row; {
     box-sizing: border-box;
     display: flex;
@@ -30,6 +34,7 @@
   .has(col; {
     box-sizing: border-box;
     flex: 0 0 100%;
+    max-width: 100%;
     padding: 1rem .5rem 0 .5rem;
 
     .variant(no-gutters; {
