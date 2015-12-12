@@ -47,6 +47,18 @@
   }
 }
 
+.make-text-helper(@breakpoint) {
+  .grid__text--@{breakpoint}-right {
+    text-align: right;
+  }
+  .grid__text--@{breakpoint}-left {
+    text-align: left;
+  }
+  .grid__text--@{breakpoint}-center {
+    text-align: center;
+  }
+}
+
 .make-helpers(@breakpoint) {
   .make-grid-top-helper(@breakpoint);
   .make-grid-center-helper(@breakpoint);
@@ -55,4 +67,5 @@
   .make-last-col-helper(@breakpoint);
   .make-reverse-helper(@breakpoint);
   .make-col-flexible-helper(@breakpoint);
+  .make-text-helper(@breakpoint);
 }
