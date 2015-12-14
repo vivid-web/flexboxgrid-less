@@ -1,71 +1,59 @@
 // Helper for the grid align top
-.make-grid-top-helper(@breakpoint) {
-  .grid__row--@{breakpoint}-top {
+.make-row-helpers(@breakpoint) {
+  .row--@{breakpoint}-top {
     align-items: flex-start;
   }
-}
-
-// Helper for the grid align center
-.make-grid-center-helper(@breakpoint) {
-  .grid__row--@{breakpoint}-center {
+  .row--@{breakpoint}-center {
     align-items: center;
   }
-}
-
-// Helper for the grid align bottom
-.make-grid-bottom-helper(@breakpoint) {
-  .grid__row--@{breakpoint}-bottom {
+  .row--@{breakpoint}-bottom {
     align-items: flex-end;
   }
-}
-
-// Helper for the sorting the first item
-.make-first-col-helper(@breakpoint) {
-  .grid__col--@{breakpoint}-first {
-    order: -1;
-  }
-}
-
-// Helper for the sorting the first item
-.make-last-col-helper(@breakpoint) {
-  .grid__col--@{breakpoint}-last {
-    order: 1;
-  }
-}
-
-// Helper for the reversing the items
-.make-reverse-helper(@breakpoint) {
-  .grid__row--@{breakpoint}-reverse {
+  .row--@{breakpoint}-reverse {
     flex-direction: row-reverse;
   }
 }
 
-// Helper for making the column flexible
-.make-col-flexible-helper(@breakpoint) {
-  .grid__col--@{breakpoint}-flex {
+// Helper for the sorting the first item
+.make-col-helpers(@breakpoint) {
+  .col--@{breakpoint}-align-top {
+    align-self: flex-start;
+  }
+  .col--@{breakpoint}-align-center {
+    align-self: center;
+  }
+  .col--@{breakpoint}-align-bottom {
+    align-self: flex-end;
+  }
+  .col--@{breakpoint}-first {
+    order: -1;
+  }
+  .col--@{breakpoint}-last {
+    order: 1;
+  }
+  .col--@{breakpoint}-reset {
+    order: 0;
+  }
+
+  .col--@{breakpoint}-flex {
     display: flex;
   }
 }
 
-.make-text-helper(@breakpoint) {
-  .grid__text--@{breakpoint}-right {
+.make-text-helpers(@breakpoint) {
+  .text--@{breakpoint}-right {
     text-align: right;
   }
-  .grid__text--@{breakpoint}-left {
+  .text--@{breakpoint}-left {
     text-align: left;
   }
-  .grid__text--@{breakpoint}-center {
+  .text--@{breakpoint}-center {
     text-align: center;
   }
 }
 
 .make-helpers(@breakpoint) {
-  .make-grid-top-helper(@breakpoint);
-  .make-grid-center-helper(@breakpoint);
-  .make-grid-bottom-helper(@breakpoint);
-  .make-first-col-helper(@breakpoint);
-  .make-last-col-helper(@breakpoint);
-  .make-reverse-helper(@breakpoint);
-  .make-col-flexible-helper(@breakpoint);
-  .make-text-helper(@breakpoint);
+  .make-row-helpers(@breakpoint);
+  .make-col-helpers(@breakpoint);
+  .make-text-helpers(@breakpoint);
 }

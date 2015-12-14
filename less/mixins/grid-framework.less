@@ -28,7 +28,7 @@
 
 .make-grid-column(@breakpoint, @columns) {
   .make-helpers(@breakpoint);
-  .grid__col--@{breakpoint} {
+  .col--@{breakpoint} {
     .make-default();
     .make-column(@columns);
     .make-offset(@columns);
@@ -38,7 +38,7 @@
 .make-column(@breakpoint, @columns) {
   @breakpoint_temp : extract(@breakpoint, 1);
 
-  .Grid__col--@{breakpoint_temp} {
+  .col--@{breakpoint_temp} {
     .for(@columns);
     .-each(@number) {
       &-@{number} {
@@ -49,16 +49,7 @@
   }
 }
 
-.make-gutter() {
-  .Grid--gutters {
-    .Grid__col {
-      padding: 1rem 0 0 1rem;
-    }
-  }
-}
-
-.make-grid(@breakpoints, @columns) {
-
+.init(@breakpoints, @columns) {
   .for(@breakpoints);
   .-each(@breakpoint) {
     @size : extract(@breakpoint, 1);
