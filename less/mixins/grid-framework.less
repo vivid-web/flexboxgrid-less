@@ -28,7 +28,7 @@
 
 .make-grid-column(@breakpoint, @columns) {
   .make-helpers(@breakpoint);
-  .col--@{breakpoint} {
+  .Col--@{breakpoint} {
     .make-default();
     .make-column(@columns);
     .make-offset(@columns);
@@ -38,7 +38,7 @@
 .make-column(@breakpoint, @columns) {
   @breakpoint_temp : extract(@breakpoint, 1);
 
-  .col--@{breakpoint_temp} {
+  .Col--@{breakpoint_temp} {
     .for(@columns);
     .-each(@number) {
       &-@{number} {
