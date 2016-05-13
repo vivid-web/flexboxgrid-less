@@ -11,7 +11,7 @@
   .for(@columns);
   .-each(@number) {
     &-offset-@{number} {
-      margin-left: 100% * ( @number / 12 );
+      margin-left: 100% * ( @number / @columns );
     }
   }
 }
@@ -20,7 +20,7 @@
   .for(@columns);
   .-each(@number) {
     &-@{number} {
-      width: 100% * (@number / 12);
+      width: 100% * (@number / @columns);
       flex: none;
     }
   }
@@ -42,7 +42,7 @@
     .for(@columns);
     .-each(@number) {
       &-@{number} {
-        width: 100% * (@number / 12);
+        width: 100% * (@number / @columns);
         flex: none;
       }
     }
