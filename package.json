@@ -1,6 +1,6 @@
 {
   "name": "flexbox-grid-less",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "A simple flexbox CSS grid system",
   "main": "dist/flexbox-grid.css",
   "files": [
