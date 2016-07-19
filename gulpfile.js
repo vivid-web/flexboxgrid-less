@@ -4,27 +4,27 @@ var gulp = require('gulp');
 var less = require('gulp-less');
 var sourcemaps = require('gulp-sourcemaps');
 var prefix = require('gulp-autoprefixer');
-var minifyCss = require('gulp-minify-css');
+var cleanCss = require('gulp-clean-css');
 var rename = require('gulp-rename');
 var jade = require('gulp-jade');
 
 var directories = {
     less: {
-        input: './less/flexbox-grid.less',
+        input: './src/flexbox-grid.less',
         output: {
             folder: './dist',
             fileName: 'flexbox-grid.css'
         }
     },
     jade: {
-        input: './resources/jade/index.jade',
+        input: './assets/jade/index.jade',
         output: {
             folder: './docs',
             fileName: 'index.html'
         }
     },
     minify: {
-        input: './less/flexbox-grid.less',
+        input: './src/flexbox-grid.less',
         output: {
             folder: './dist',
             fileName: 'flexbox-grid.min.css'
@@ -32,7 +32,8 @@ var directories = {
     }
 };
 
-gulp.task('less', function () {
+// Dist
+gulp.task('dist-css', function () {
     return gulp
         .src(directories.less.input)
         .pipe(sourcemaps.init())
@@ -43,29 +44,37 @@ gulp.task('less', function () {
         .pipe(gulp.dest(directories.less.output.folder));
 });
 
-gulp.task('minify-css', function () {
+gulp.task('dist-minify', function () {
     return gulp
         .src(directories.minify.input)
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(prefix())
-        .pipe(minifyCss())
+        .pipe(cleanCss())
         .pipe(rename(directories.minify.output.fileName))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(directories.minify.output.folder));
 });
 
+gulp.task('build', ['dist-css', 'dist-minify']);
+
+// Docs
+gulp.task('docs-fonts', function() {
+    return gulp
+        .src(['./assets/fonts/**'])
+        .pipe(gulp.dest('./docs/dist/fonts/'));
+});
 
 gulp.task('docs-css', function () {
     return gulp
-        .src(['./resources/less/stylesheet.less'])
+        .src(['./assets/less/stylesheet.less'])
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(prefix())
-        .pipe(minifyCss())
+        .pipe(cleanCss())
         .pipe(rename('stylesheet.min.css'))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./docs/dist'));
+        .pipe(gulp.dest('./docs/dist/css'));
 });
 
 gulp.task('docs-html', function () {
@@ -77,5 +86,6 @@ gulp.task('docs-html', function () {
         .pipe(rename(directories.jade.output.fileName))
         .pipe(gulp.dest(directories.jade.output.folder));
 });
+gulp.task('docs', ['docs-fonts', 'docs-css', 'docs-html']);
 
-gulp.task('default', ['less', 'minify-css', 'docs-css', 'docs-html']);
+gulp.task('default', ['build', 'docs']);

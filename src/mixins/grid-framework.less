@@ -1,0 +1,67 @@
+.make-default() {
+  & {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+    padding: 1rem .5rem 0 .5rem;
+  }
+}
+
+.make-offset(@columns) {
+  .for(@columns);
+  .-each(@number) {
+    &-offset-@{number} {
+      margin-left: 100% * ( @number / @columns );
+    }
+  }
+}
+
+.make-column(@columns) {
+  .for(@columns);
+  .-each(@number) {
+    &-@{number} {
+      width: 100% * (@number / @columns);
+      flex: none;
+    }
+  }
+}
+
+.make-grid-column(@breakpoint, @columns) {
+  .make-helpers(@breakpoint);
+  .col--@{breakpoint} {
+    .make-default();
+    .make-column(@columns);
+    .make-offset(@columns);
+  }
+}
+
+.make-column(@breakpoint, @columns) {
+  @breakpoint_temp : extract(@breakpoint, 1);
+
+  .col--@{breakpoint_temp} {
+    .for(@columns);
+    .-each(@number) {
+      &-@{number} {
+        width: 100% * (@number / @columns);
+        flex: none;
+      }
+    }
+  }
+}
+
+.init(@breakpoints, @columns) {
+  .for(@breakpoints);
+  .-each(@breakpoint) {
+    @size : extract(@breakpoint, 1);
+    @width : extract(@breakpoint, 2);
+
+    & when (@width = 0) {
+      .make-grid-column(@size, @columns);
+    }
+    & when (@width > 0) {
+      @media (min-width: @width) {
+        .make-grid-column(@size, @columns);
+      }
+    }
+  }
+}
