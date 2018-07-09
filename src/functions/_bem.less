@@ -1,0 +1,13 @@
+// An block has an element.
+.has(@element; @content) {
+  &__@{element} {
+    @content();
+  }
+}
+
+// An element has a variant.
+.variant(@modifier; @content) {
+  &--@{modifier} {
+    @content();
+  }
+}

@@ -9,23 +9,23 @@ var rename = require('gulp-rename');
 
 var directories = {
     less: {
-        input: './src/flexbox-grid.less',
+        input: './src/flexboxgrid.less',
         output: {
             folder: './dist',
-            fileName: 'flexbox-grid.css'
+            fileName: 'flexboxgrid.css'
         }
     },
     minify: {
-        input: './src/flexbox-grid.less',
+        input: './src/flexboxgrid.less',
         output: {
             folder: './dist',
-            fileName: 'flexbox-grid.min.css'
+            fileName: 'flexboxgrid.min.css'
         }
     }
 };
 
 // Dist
-gulp.task('dist-css', function () {
+function distCss() {
     return gulp
         .src(directories.less.input)
         .pipe(sourcemaps.init())
@@ -34,9 +34,9 @@ gulp.task('dist-css', function () {
         .pipe(rename(directories.less.output.fileName))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(directories.less.output.folder));
-});
+}
 
-gulp.task('dist-minify', function () {
+function distMinify() {
     return gulp
         .src(directories.minify.input)
         .pipe(sourcemaps.init())
@@ -46,8 +46,10 @@ gulp.task('dist-minify', function () {
         .pipe(rename(directories.minify.output.fileName))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(directories.minify.output.folder));
-});
+}
 
-gulp.task('build', ['dist-css', 'dist-minify']);
+var build = gulp.series(gulp.parallel(distCss, distMinify));
 
-gulp.task('default', ['build']);
+gulp.task('build', build);
+
+gulp.task('default', build);

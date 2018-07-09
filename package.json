@@ -1,21 +1,20 @@
 {
-  "name": "flexbox-grid-less",
+  "name": "@vivid-web/flexboxgrid-sass",
   "version": "3.2.0",
   "description": "A simple flexbox CSS grid system",
-  "main": "dist/flexbox-grid.css",
+  "main": "dist/flexboxgrid.css",
   "files": [
     "dist",
     "src"
   ],
   "scripts": {
-    "build": "gulp",
+    "build": "gulp default",
     "dist": "gulp build",
-    "docs": "gulp docs",
     "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vivid-web/flexbox-grid-less.git"
+    "url": "https://github.com/vivid-web/flexboxgrid-less.git"
   },
   "keywords": [
     "vivid",
@@ -35,15 +34,15 @@
   "author": "Vivid Websolutions <info@vivid-websolutions.nl>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vivid-web/flexbox-grid-less/issues"
+    "url": "https://github.com/vivid-web/flexboxgrid-less/issues"
   },
   "homepage": "http://flexboxgrid.vivid-websolutions.nl",
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-clean-css": "^2.0.11",
-    "gulp-less": "^3.0.5",
-    "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^1.6.0"
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-less": "^3.5.0",
+    "gulp-rename": "^1.3.0",
+    "gulp-sourcemaps": "^2.6.4"
   }
 }

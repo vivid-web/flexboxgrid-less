@@ -1,0 +1,55 @@
+// Will make a single grid row.
+.make-row(@breakpoint) {
+  .row--@{breakpoint}-no-gutters {
+    margin: 0;
+  }
+
+  .row--@{breakpoint}-top {
+    align-items: flex-start;
+  }
+
+  .row--@{breakpoint}-center {
+    align-items: center;
+  }
+
+  .row--@{breakpoint}-bottom {
+    align-items: flex-end;
+  }
+
+  .row--@{breakpoint}-reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.make-offset-columns(@columns, @breakpoints) {
+  .loop(@columns + 1);
+  .-each(@column) {
+
+  }
+}
+
+.make-columns(@breakpoint, @columns) {
+  //.make-column-helpers(@breakpoint);
+  //.make-default-column(@breakpoint);
+  //.make-responsive-columns(@columns, @breakpoint);
+  .make-offset-columns(@columns, @breakpoint);
+}
+
+// Will make the grid columns
+.make-columns(@breakpoints, @columns) {
+  .for(@breakpoints);
+  .-each(@breakpoint) {
+    @size: extract(@breakpoint, 1);
+    @width: extract(@breakpoint, 2);
+
+    & when (@width = 0) {
+      .make-column(@size, @columns);
+    }
+
+    & when (@width > 0) {
+      @media (min-width: @width) {
+        .make-column(@size, @columns);
+      }
+    }
+  }
+}

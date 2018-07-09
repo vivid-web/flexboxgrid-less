@@ -1,5 +1,9 @@
+@import '../bootstrap.less';
+
 .grid {
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   padding: 0 .5rem;
 
   .variant(container; {
@@ -12,3 +16,5 @@
     padding: 0;
   });
 }
+
+.make-grids(@breakpoints);

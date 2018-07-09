@@ -1,0 +1,31 @@
+// Will make a single text item.
+.make-single-text(@breakpoint) {
+  .text--@{breakpoint}-right {
+    text-align: right;
+  }
+  .text--@{breakpoint}-left {
+    text-align: left;
+  }
+  .text--@{breakpoint}-center {
+    text-align: center;
+  }
+}
+
+// Will make the text.
+.make-text(@breakpoints) {
+  .for(@breakpoints);
+  .-each(@breakpoint) {
+    @size : extract(@breakpoint, 1);
+    @width : extract(@breakpoint, 2);
+
+    & when (@width = 0) {
+      .make-single-text(@size);
+    }
+
+    & when (@width > 0) {
+      @media (min-width: @width) {
+        .make-single-text(@size);
+      }
+    }
+  }
+}
